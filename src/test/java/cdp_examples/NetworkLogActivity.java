@@ -21,14 +21,12 @@ public class NetworkLogActivity {
 		devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
 		
 		//request
-		devTools.addListener(Network.requestWillBeSent(), request ->
-		{
+		devTools.addListener(Network.requestWillBeSent(), request ->{
 			Request req = request.getRequest();
 		});
 		
 		//response
-		devTools.addListener(Network.responseReceived(), response ->
-		{			
+		devTools.addListener(Network.responseReceived(), response ->{			
 			Response res = response.getResponse();
 			if(res.getStatus().toString().startsWith("4")) {
 				System.out.println(req.getUrl() + "is failing with status code" + res.getStatus());
